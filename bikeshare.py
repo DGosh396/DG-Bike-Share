@@ -71,8 +71,8 @@ def get_filters():
         else:
             break
 
-            print('-' * 40)
-            return city, month, day
+    print('-' * 40)
+    return city, month, day
 
 
 def load_data(city, month, day):
@@ -91,7 +91,7 @@ def load_data(city, month, day):
 
     # TO DO: display the most common month
 
-    popular_month = df[month], mode()[0]
+    popular_month = df['month'], mode()[0]
     print('Common Month:', popular_month)
 
     # TO DO: display the most common day of week
