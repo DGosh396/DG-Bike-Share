@@ -54,7 +54,8 @@ def get_filters():
             # TO DO: get user input for month (all, January, February, ... , June)
 
     while True:
-        month = input("\nwhat month would you like to filter by? January, February, March, April, May, June or type all if you do not have any preference.\n")
+        month = input("\nwhat month would you like to filter by? January, February, March, April, May, June"
+                      "or type all if you do not have any preference.\n")
         if month not in ('January', 'February', 'March', 'April', 'May', 'June', 'all'):
             print("Sorry, I do not understand, Please try again.")
             continue
@@ -64,10 +65,11 @@ def get_filters():
     # TO DO: get user input for day of week (all, Monday, Tuesday, ... Sunday)
 
     while True:
-        day = input("\nwhat day are you looking for? Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday or type all if you do not have any preference.\n")
+        day = input("\nwhat day are you looking for? Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday"
+                    " or type all if you do not have any preference.\n")
         if day not in ('all', 'Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'all'):
-          print("Sorry, I do not understand, Please try again.")
-          continue
+            print("Sorry, I do not understand, Please try again.")
+            continue
         else:
             break
 
@@ -75,7 +77,7 @@ def get_filters():
     return city, month, day
 
 
-def load_data(city, month, day):
+def load_data(city, month, day, start_time=None):
     """
     Loads data for the specified city and filters by month and day if applicable.
 
@@ -91,6 +93,8 @@ def load_data(city, month, day):
 
     # TO DO: display the most common month
 
+    df['Start Time'] = pd.to_datetime(df['Start Time'])
+    df['month'] = df['Start Time'].dt.month
     popular_month = df['month'], mode()[0]
     print('Common Month:', popular_month)
 
